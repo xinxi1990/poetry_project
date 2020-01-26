@@ -27,4 +27,7 @@ poetry_run --thread-count 10
 ```
 
 # pip安装
+```bash
+pip3 install git+https://github.com/xinxi1990/poetry_project.git@master
+```
 

@@ -15,17 +15,21 @@ def main():
     thread_count = int(args.thread_count)
     logger.info("############### Thread Count {0}  ###############".format(thread_count))
 
-
     for i in range(thread_count):
         t = threading.Thread(target=post_requests, args=(str(i)))
         t.start()
 
 
 def post_requests(thread_name):
+    """
+
+    :param thread_name:
+    :return:
+    """
     logger.info("############### APP {0} START ###############".format(thread_name))
     r = httpx.get('https://www.example.org/')
     logger.info('请求状态码:{0}'.format(r.status_code))
     # print(r.text)
-    logger.info("############### APP {0} END ###############")
+    logger.info("############### APP {0} END ###############".format(thread_name))
 
 
