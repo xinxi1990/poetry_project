@@ -35,7 +35,7 @@ def main():
     load_time = int(args.load_time)
     load_url = str(args.load_url)
     logger.info("############### 当前线程数 {0}  ###############".format(thread_count))
-
+    tools_start_time = time.time()
     # for i in range(thread_count):
     #     t = threading.Thread(target=post_requests, args=(str(i)))
     #     t.start()
@@ -44,7 +44,7 @@ def main():
     run(thread_count,load_time,load_url,loop)
     loop.run_until_complete(asyncio.wait(tasks))
 
-
+    logger.info("############### 程序耗时 {0}  ###############".format(round(time.time() - tools_start_time)))
 
 
 
@@ -71,7 +71,8 @@ def post_requests(thread_name):
 tasks = []
 async def async_request(url):
     start_time = time.time()
-    async with ClientSession() as session:
+    conn = aiohttp.TCPConnector(verify_ssl=False)  # 防止ssl报错
+    async with ClientSession(connector=conn) as session:
         async with session.get(url) as response:
             respons = await response.read()
             end_time = time.time()
@@ -81,6 +82,8 @@ async def async_request(url):
             sample_count +=1
             logger.info("############### 请求接口 {0} 发生时间 {1} ###############".format(url,time.time()))
             return respons,status,cost
+
+
 
 def run(thread_count,load_time,url,loop):
 

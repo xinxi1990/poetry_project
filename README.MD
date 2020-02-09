@@ -23,7 +23,7 @@ poetry build
 
 # 本地安装
 ```
-pip3 install /dist/poetry_project-0.1.0.tar.gz
+pip3 install ./dist/poetry_project-0.1.0.tar.gz
 ```
 
 # 卸载项目
@@ -35,6 +35,8 @@ pip3 uninstall poetry-project
 ```
 poetry_run --thread-count 100 --load-time 1  --load-url http://127.0.0.1:8763/hi
 ```
+
+
 
 # pip安装
 ```
@@ -48,6 +50,11 @@ git tag -a v1.0 -m "relase 1.0版本"
 git push origin v1.0
 ```
 
+
+# 执行所有单元测试
+```
+poetry run python3 -m unittest discover
+```
 
 # 参考
 
