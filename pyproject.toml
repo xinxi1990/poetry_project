@@ -10,14 +10,14 @@ flask = "^1.1.1"
 httpx = "^0.11.0"
 logzero = "^1.5.0"
 redis = "^3.3.11"
-aiohttp = "^3.6.2"
+aiohttp = "^3.8.5"
 numpy = "^1.18.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 httpx = "^0.11.0"
 logzero = "^1.5.0"
-aiohttp = "^3.6.2"
+aiohttp = "^3.8.5"
 numpy = "^1.18.1"
 
 
